@@ -2,6 +2,8 @@ import confluent_kafka as ck
 import json
 import producer_servidor as ps
 
+"""Por algun motivo, no reconoce las solicitudes"""
+
 config = {
     "bootstrap.servers": "localhost:9092",
     "group.id": "calculadora",
