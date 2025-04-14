@@ -17,7 +17,7 @@ def procesar_acierto(data):
     op1=data["args"]["op1"]
     op2=data["args"]["op2"]
     communicator=Ice.initialize()
-    str_proxy="calculator -t -e 1.1:tcp -h 172.16.0.234 -p 10000 -t 60000:tcp -h 172.17.0.1 -p 10000 -t 60000" #De momento es fijo, pero habra que cambiarlo"
+    str_proxy="calculator -t -e 1.1:tcp -h 192.168.1.37 -p 10000 -t 60000:tcp -h 172.18.0.1 -p 10000 -t 60000:tcp -h 172.17.0.1 -p 10000 -t 60000" #De momento es fijo, pero habra que cambiarlo"
     proxy=communicator.stringToProxy(str_proxy)
     calculator=rc.CalculatorPrx.checkedCast(proxy)
     if operacion=="sum":
@@ -36,7 +36,7 @@ def procesar_acierto(data):
         except ZeroDivisionError:
             #Aqui iria el codigo de que hacer si salta el error (devolver mensaje con error)
             mensaje = {
-                "id": id,
+                "id": str(id),
                 "status": False,
                 "error": "No es posible dividir entre 0"
             }
@@ -51,7 +51,7 @@ def procesar_acierto(data):
     #No existe la operacion    
     else:
         mensaje = {
-            "id": id,
+            "id": str(id),
             "status": False,
             "error": "operation not found"
         }
@@ -65,7 +65,7 @@ def procesar_acierto(data):
     
     #La operacion existe y se obtiene resultado
     mensaje = {
-        "id": id,
+        "id": str(id),
         "status": True,
         "result": resultado
     }
@@ -88,7 +88,7 @@ def procesar_fallo(data):
     id=data["id"]
 
     mensaje = {
-        "id": id,
+        "id": str(id),
         "status": False,
         "error": "wrong format"
     }

@@ -2,27 +2,31 @@ import confluent_kafka as ck
 import json
 import producer_servidor as ps
 
-"""Por algun motivo, no reconoce las solicitudes"""
-
 config = {
     "bootstrap.servers": "localhost:9092",
     "group.id": "calculadora",
+    "auto.offset.reset": "earliest"
 }
 
 consumer = ck.Consumer(config)
+consumer.subscribe(["calculadora"])
 
 while True:
     print("Esperando mensaje...")
-    consumer.subscribe(["calculadora"])
-    mensaje = consumer.poll(1.0)
+    mensajes = consumer.consume(num_messages=1, timeout=1.0)
 
-    if mensaje is None:
+    if not mensajes:
+        continue
+
+    mensaje = mensajes[0]
+
+    if mensaje.error():
+        print("Error en el mensaje:", mensaje.error())
         continue
 
     try:
-        data=json.loads(mensaje.value().decode("utf-8"))
-        formato=False
-        formato= (
+        data = json.loads(mensaje.value().decode("utf-8"))
+        formato = (
             "id" in data and
             "operation" in data and
             "args" in data and
