@@ -73,8 +73,11 @@ def main():
         print(f"Esperando resultado para la operación: {op1} {operacion} {op2}...\n")
         time.sleep(15)
         data=cc.esperar_mensaje(operacion_id)
-        print("Resultado recibido.\n")
-        print(f"Resultado de la operacion con ID {data['id']} es: {data['result']}")
+        print("Respuesta recibida.\n")
+        if data["status"]==True:
+            print(f"Resultado de la operacion con ID {data['id']} es: {data['result']}")
+        else:
+            print(f"Error del servidor: {data['error']}") 
 
 
 if __name__ == "__main__":

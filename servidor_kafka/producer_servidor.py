@@ -30,11 +30,10 @@ def procesar_acierto(data):
         resultado=calculator.mult(op1,op2)
         print("Multiplicacion")
     elif operacion=="div":
-        try:
+        if op2!=0:
             resultado=calculator.div(op1,op2)
             print("Division")
-        except ZeroDivisionError:
-            #Aqui iria el codigo de que hacer si salta el error (devolver mensaje con error)
+        else:
             mensaje = {
                 "id": str(id),
                 "status": False,
