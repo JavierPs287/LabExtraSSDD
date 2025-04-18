@@ -4,12 +4,11 @@ build-backend = "pdm.backend"
 
 [project]
 name = "ssdd-calculator"
-version = "0.1.0"
+version = "1.0.0"
 authors = [
-  { name="Tobias Diaz", email="tobias.diaz@uclm.es" },
-  { name="Jose Luis Segura", email="joseluis.segura@uclm.es"},
+  { name="Javier Plaza Sánchez", email="javier.plaza3@alu.uclm.es" },
 ]
-description = "Template for Distributed Systems laboratory"
+description = "Calculadora remota usando Apache Kafka"
 requires-python = ">=3.10"
 dependencies = ['zeroc-ice']
 classifiers = [
