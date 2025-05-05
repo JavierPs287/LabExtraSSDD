@@ -12,6 +12,7 @@ config = {
 # Creamos el consumidor y lo inicializamos en el canal "calculadora"
 consumer = ck.Consumer(config)
 consumer.subscribe(["calculadora"])
+proxy = str(input("Introduce el str del proxy: "))
 print("Esperando mensaje...")
 
 while True:
@@ -43,10 +44,11 @@ while True:
         )
         # Si cumple con el formato de la orden, lo procesamos como correcto
         if formato:
-            ps.procesar_acierto(data)
+            ps.procesar_acierto(proxy,data)
         # Si no cumple con el formato, lo procesamos como fallo
         else:
             ps.procesar_fallo(data)
 
     except json.JSONDecodeError:
+        # Si al decodificar el mensaje no es formato json, salta error
         print("Error decoding JSON")
