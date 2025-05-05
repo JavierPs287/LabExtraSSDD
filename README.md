@@ -18,10 +18,32 @@ pip install -e .
 
 ## Execution
 
-To run the template server, just install the package and run
+Before the server is running, you gotta start the docker-compose
+
+```
+cd calculator
+docker-compose up -d
+```
+
+If you have trouble starting the docker-compose, execute this
+
+```
+docker-compose down && docker-compose up -d
+```
+
+Once the docker compose is running, run the server
 
 ```
 ssdd-calculator --Ice.Config=config/calculator.config
+```
+
+## Client
+
+Once the server is started, you can try it with the client included in this repository. In another terminal, execute this
+
+```
+cd cliente_kafka
+python producer_cliente.py
 ```
 
 ## Configuration
