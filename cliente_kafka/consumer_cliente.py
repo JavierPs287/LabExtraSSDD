@@ -11,10 +11,10 @@ def generar_consumer():
 
 def esperar_mensaje(id):
     consumer = generar_consumer()
-    consumer.subscribe([id])
+    consumer.subscribe(["resultados"])
+    print("Esperando mensaje...")
 
     while True:
-        print("Esperando mensaje...")
         mensajes = consumer.consume(num_messages=1, timeout=1.0)
 
         if not mensajes:
@@ -30,5 +30,7 @@ def esperar_mensaje(id):
             data = json.loads(mensaje.value().decode("utf-8"))
             if data["id"] == id:
                 return data
+            else:
+                print("ID no coincide. Esperando el mensaje correcto...")
         except json.JSONDecodeError:
             print("Error decoding JSON")

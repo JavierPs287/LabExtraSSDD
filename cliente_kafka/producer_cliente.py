@@ -38,6 +38,7 @@ def obtener_operandos():
 def main():
     producer = generar_producer()
     topic = "calculadora"  # Topic donde se enviarán las solicitudes
+    n = 0
     
     while True:
         opcion = mostrar_menu()
@@ -53,7 +54,8 @@ def main():
         op1, op2 = obtener_operandos()
         
         # Generar un ID único para esta operación
-        operacion_id = str(uuid.uuid4())
+        n+=1
+        operacion_id = str(f"{operacion}{n}") #Cambiar id
         
         # Construir el mensaje
         mensaje = {
@@ -71,7 +73,6 @@ def main():
         
         print(f"\nSolicitud enviada con ID: {operacion_id}")
         print(f"Esperando resultado para la operación: {op1} {operacion} {op2}...\n")
-        time.sleep(15)
         data=cc.esperar_mensaje(operacion_id)
         print("Respuesta recibida.\n")
         if data["status"]==True:

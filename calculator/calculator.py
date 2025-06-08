@@ -19,5 +19,5 @@ class Calculator(rc.Calculator):
     def div(self,a,b,current):
         """Divide two numbers."""
         if b == 0:
-            raise ZeroDivisionError("Division by zero is not allowed.")
+            raise rc.ZeroDivisionError()
         return a / b
