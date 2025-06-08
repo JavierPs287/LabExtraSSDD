@@ -3,5 +3,10 @@ __pycache__
 .vscode
 *.pyc
 /ssdd
+<<<<<<< HEAD
 /calculator/remotecalculator_ice.py
 /calculator/RemoteCalculator
+=======
+/comunicador_kafka/remotecalculator_ice.py
+/comunicador_kafka/RemoteCalculator
+>>>>>>> separar-comunicador

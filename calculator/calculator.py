@@ -20,5 +20,9 @@ class Calculator(rc.Calculator):
         """Divide two numbers.
         Raises ZeroDivisionError if b is zero."""
         if b == 0:
+<<<<<<< HEAD
             raise rc.ZeroDivisionError
+=======
+            raise rc.ZeroDivisionError()
+>>>>>>> separar-comunicador
         return a / b
