@@ -44,7 +44,13 @@ If you have trouble starting the docker-compose, execute this
 docker-compose down && docker-compose up -d
 ```
 
-Once the docker-compose is running, we can start running the comunicator
+Before running the comunicator, we need to slice the file .ice
+
+```
+slice2py remotecalculator.ice
+```
+
+Once the docker-compose is running and the file .ice is sliced, we can start running the comunicator
 
 ```
 python consumer_servidor.py
