@@ -16,12 +16,25 @@ Or, if you want to modify it during your development,
 pip install -e .
 ```
 
-## Execution
+## Server
 
-Before the server is running, you gotta start the docker-compose
+To run the server, in the root directory of this project we execute
 
 ```
-cd calculator
+ssdd-calculator --Ice.Config=config/calculator.config
+```
+
+## Comunicator
+
+After the server is running, we should open another terminal and move to the directory
+
+```
+cd comunicador_kafka
+```
+
+First, we have to start the docker-compose
+
+```
 docker-compose up -d
 ```
 
@@ -31,15 +44,15 @@ If you have trouble starting the docker-compose, execute this
 docker-compose down && docker-compose up -d
 ```
 
-Once the docker compose is running, run the server
+Once the docker-compose is running, we can start running the comunicator
 
 ```
-ssdd-calculator --Ice.Config=config/calculator.config
+python consumer_servidor.py
 ```
 
 ## Client
 
-Once the server is started, you can try it with the client included in this repository. In another terminal, execute this
+Once the server and the comunicator are running, you can try it with the client included in this repository. In another terminal, execute this
 
 ```
 cd cliente_kafka
